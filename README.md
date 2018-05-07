@@ -160,3 +160,56 @@ void draw_maze_easy()
    cout << endl;
   }
 }
+void character_movement_easy()
+{
+    int x = 15;
+    int y = 10;
+    int x_before = 15;
+    int y_before = 10;
+
+    while (true)
+    {
+        gotoXY(x_before, y_before);
+        cout << " ";
+
+        gotoXY(x,y);
+        cout << char(4);
+
+        input_key_easy = getch();
+        x_before = x;
+        y_before = y;
+
+        // Analyzes the key variable
+        // Also makes a controller for the game
+        if(input_key_easy == 'w')
+        {
+            y -= 1;
+        }
+
+        else if(input_key_easy == 's')
+        {
+            y += 1;
+        }
+
+        else if(input_key_easy == 'a')
+        {
+            x -= 1;
+        }
+
+        else if(input_key_easy == 'd')
+        {
+            x += 1;
+        }
+
+        while(maze_map_easy[y][x] == 1)
+        {
+            x = x_before;
+            y = y_before;
+        }
+
+        while(maze_map_easy[y][x] == 2)
+        {
+            cout << "YOU WON!!!!!! " << char(2) << endl;
+        }
+    }
+}
