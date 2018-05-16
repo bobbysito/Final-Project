@@ -259,3 +259,97 @@ void character_movement_easy()
 
     }
 }
+// Function Prototype
+void drawMazeMedium()
+{
+    // This loop will increment until it reaches twenty-one because it is the vertical line
+for (int v = 0; v < 37; v++)
+  {
+      // This loop will increment until it reaches thirty-one because it is the horizontal line
+    for (int h = 0; h < 56; h++)
+    {
+      switch (mazeMapMedium[v][h])
+      {
+        // These cases are defining what the numbers mean
+        // The break breaks the switch
+        case 0:
+            cout << " ";
+            break;
+        case 1:
+            // Char 219 is simply a block
+            cout << char(219);
+            break;
+        case 2:
+            cout << " ";
+            break;
+      }
+    }
+    cout << endl;
+  }
+}
+*// void drawMazeMediumy(): Displays int mazeMapMedium (the medium maze) onto the screen
+
+void characterMovementMedium() // This void will move the character
+{
+    int x = 53;
+    int y = 37;
+    int xBefore = 53;
+    int yBefore = 37;
+
+    while (true)
+    {
+        gotoXY(xBefore, yBefore);
+        cout << " ";
+
+        gotoXY(x,y);
+        cout << char(4);
+
+        inputKeyMedium = getch();
+        xBefore = x;
+        yBefore = y;
+
+        // Analyzes the key variable
+        // Also makes a controller for the game
+        if(inputKeyMedium == 'w')
+        {
+            y -= 1;
+        }
+
+        else if(inputKeyMedium == 's')
+        {
+            y += 1;
+        }
+
+        else if(inputKeyMedium == 'a')
+        {
+            x -= 1;
+        }
+
+        else if(inputKeyMedium == 'd')
+        {
+            x += 1;
+        }
+
+         while(mazeMapMedium[y][x] == 1)
+        {
+            x = xBefore;
+            y = yBefore;
+        }
+
+
+        while(mazeMapMedium[y][x] == 2)
+        {
+            cout << "                                                                       " << endl;
+            cout << " /$$     /$$  /$$$$$$  /$$   /$$       /$$      /$$  /$$$$$$  /$$   /$$"<< endl;
+            cout << "|  $$   /$$/ /$$__  $$| $$  | $$      | $$  /$ | $$ /$$__  $$| $$$ | $$"<< endl;
+            cout << " \  $$ /$$/ | $$  \ $$| $$  | $$      | $$ /$$$| $$| $$  \ $$| $$$$| $$"<< endl;
+            cout << "  \  $$$$/  | $$  | $$| $$  | $$      | $$/$$ $$ $$| $$  | $$| $$ $$ $$"<< endl;
+            cout << "   \  $$/   | $$  | $$| $$  | $$      | $$$$_  $$$$| $$  | $$| $$  $$$$" << endl;
+            cout << "    | $$    | $$  | $$| $$  | $$      | $$$/ \  $$$| $$  | $$| $$\  $$$" << endl;
+            cout << "    | $$    |  $$$$$$/|  $$$$$$/      | $$/   \  $$|  $$$$$$/| $$ \  $$" << endl;
+            cout << "    |__/     \______/  \______/       |__/     \__/ \______/ |__/  \__/" << endl;
+        }
+    }
+}
+*// void characterMovementMedium(): Creates the controls, a,w,s,d, for the medium map mode and calls in the parameter void gotoXY(int x, int y) to position the character on the medium map and allow its movement
+
